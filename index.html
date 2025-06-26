@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invictus Manpower Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script defer src="https://unpkg.com/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('scrollBehavior', () => ({
+                shown: false,
+                init() {
+                    this.shown = true;
+                }
+            }));
+        });
+    </script>
+    <style>
+        [x-cloak] { display: none !important; }
+        
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .bg-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f59e0b' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .translate-y-8 {
+            transform: translateY(2rem);
+            opacity: 0;
+        }
+        
+        .translate-y-0 {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .opacity-0 {
+            opacity: 0;
+        }
+        
+        .opacity-100 {
+            opacity: 1;
+        }
+
+        .fade-in-section {
+            opacity: 0;
+            transition: all 1.5s ease-out;
+        }
+        
+        .fade-in-section.appear {
+            opacity: 1;
+        }
+
+        .fade-in-section.delay-200 {
+            transition-delay: 200ms;
+        }
+
+        .fade-in-section.delay-400 {
+            transition-delay: 400ms;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(var(--rotation)); }
+            50% { transform: translateY(-20px) rotate(var(--rotation)); }
+            100% { transform: translateY(0px) rotate(var(--rotation)); }
+        }
+        .animate-float {
+            --rotation: 0deg;
+            animation: float 6s ease-in-out infinite;
+        }
+        .rotate-12 {
+            --rotation: 12deg;
+        }
+        .rotate-6 {
+            --rotation: -6deg;
+        }
+        .animation-delay-300 {
+            animation-delay: 300ms;
+        }
+        .animation-delay-500 {
+            animation-delay: 500ms;
+        }
+        .animation-delay-700 {
+            animation-delay: 700ms;
+        }
+    </style>
+</head>
+<body class="bg-white font-montserrat" x-data="scrollBehavior">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50">
+        <!-- Top Bar -->
+        <div class="bg-[#C5A572]">
+            <div class="container mx-auto px-6">
+                <div class="flex justify-end items-center h-10 text-sm text-gray-900">
+                    <div class="flex items-center space-x-6">
+                        <a href="tel:(02) 8351-6872" class="hover:text-white transition-colors duration-300 flex items-center">
+                            <span class="inline-block">(02) 8351-6872</span>
+                        </a>
+                        <a href="mailto:info@invictusmanpower.net" class="hidden sm:flex items-center hover:text-white transition-colors duration-300">
+                            <span class="inline-block">info@invictusmanpower.net</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation -->
+        <div class="bg-gray-900/95 transition-colors duration-300">
+            <div class="container mx-auto px-6">
+                <div class="flex items-center justify-between h-16">
+                    <!-- Logo -->
+                    <a href="#" class="flex items-center space-x-2">
+                        <span class="text-2xl font-bold text-[#C5A572]">INVICTUS</span>
+                    </a>
+
+                    <!-- Desktop Menu -->
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="#about" class="text-gray-300 hover:text-[#C5A572] transition-all duration-300 tracking-wide">About</a>
+                        <a href="#mission" class="text-gray-300 hover:text-[#C5A572] transition-all duration-300 tracking-wide">Mission & Vision</a>
+                        <a href="#industries" class="text-gray-300 hover:text-[#C5A572] transition-all duration-300 tracking-wide">Industries</a>
+                        <a href="#core-values" class="text-gray-300 hover:text-[#C5A572] transition-all duration-300 tracking-wide">Core Values</a>
+                    </div>
+
+                    <!-- Mobile Navigation Button -->
+                    <div class="lg:hidden">
+                        <button id="menuBtn" class="text-gray-300 hover:text-[#C5A572] p-2">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path id="menuIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                                <path id="closeIcon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="lg:hidden hidden bg-gray-800">
+            <div class="container mx-auto px-6 py-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="#about" class="text-gray-300 hover:text-[#C5A572] py-2 px-4 rounded transition-colors duration-300">About</a>
+                    <a href="#mission" class="text-gray-300 hover:text-[#C5A572] py-2 px-4 rounded transition-colors duration-300">Mission & Vision</a>
+                    <a href="#industries" class="text-gray-300 hover:text-[#C5A572] py-2 px-4 rounded transition-colors duration-300">Industries</a>
+                    <a href="#core-values" class="text-gray-300 hover:text-[#C5A572] py-2 px-4 rounded transition-colors duration-300">Core Values</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image with Gradient Overlay -->
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                 alt="Background" 
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-white/95 via-white/50 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-gray-50 to-transparent"></div>
+        </div>
+
+        <!-- Decorative Network Elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <!-- Connection Lines -->
+            <svg class="absolute w-full h-full opacity-20" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <!-- Diagonal Lines -->
+                <line x1="20" y1="20" x2="40" y2="40" stroke="#C5A572" stroke-width="0.5">
+                    <animate attributeName="stroke-opacity" from="0.4" to="0.8" dur="2s" repeatCount="indefinite" />
+                </line>
+                <line x1="60" y1="20" x2="80" y2="40" stroke="#C5A572" stroke-width="0.5">
+                    <animate attributeName="stroke-opacity" from="0.8" to="0.4" dur="2.5s" repeatCount="indefinite" />
+                </line>
+                <line x1="30" y1="60" x2="50" y2="80" stroke="#C5A572" stroke-width="0.5">
+                    <animate attributeName="stroke-opacity" from="0.4" to="0.8" dur="3s" repeatCount="indefinite" />
+                </line>
+                <!-- Horizontal Lines -->
+                <line x1="20" y1="40" x2="80" y2="40" stroke="#C5A572" stroke-width="0.5">
+                    <animate attributeName="stroke-opacity" from="0.8" to="0.4" dur="2.8s" repeatCount="indefinite" />
+                </line>
+                <line x1="30" y1="60" x2="70" y2="60" stroke="#C5A572" stroke-width="0.5">
+                    <animate attributeName="stroke-opacity" from="0.4" to="0.8" dur="2.2s" repeatCount="indefinite" />
+                </line>
+            </svg>
+
+            <!-- Connection Nodes -->
+            <div class="absolute inset-0">
+                <!-- Node 1 -->
+                <div class="absolute top-1/4 left-1/4 w-4 h-4 bg-[#C5A572] rounded-full opacity-70">
+                    <div class="absolute -inset-1 bg-[#C5A572] rounded-full animate-ping opacity-40"></div>
+                </div>
+                <!-- Node 2 -->
+                <div class="absolute top-1/3 right-1/3 w-3 h-3 bg-[#C5A572] rounded-full opacity-70">
+                    <div class="absolute -inset-1 bg-[#C5A572] rounded-full animate-ping opacity-40 animation-delay-300"></div>
+                </div>
+                <!-- Node 3 -->
+                <div class="absolute bottom-1/3 left-1/3 w-5 h-5 bg-[#C5A572] rounded-full opacity-70">
+                    <div class="absolute -inset-1 bg-[#C5A572] rounded-full animate-ping opacity-40 animation-delay-700"></div>
+                </div>
+            </div>
+
+            <!-- Floating Icons -->
+            <div class="absolute inset-0">
+                <div class="absolute top-1/4 right-1/4 p-4 bg-white/40 backdrop-blur-sm rounded-xl transform rotate-12 animate-float shadow-lg">
+                    <svg class="w-8 h-8 text-[#C5A572]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                    </svg>
+                </div>
+                <div class="absolute bottom-1/3 right-1/3 p-4 bg-white/40 backdrop-blur-sm rounded-xl transform -rotate-6 animate-float animation-delay-500 shadow-lg">
+                    <svg class="w-8 h-8 text-[#C5A572]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 max-w-6xl mx-auto px-8 sm:px-12 lg:px-16 w-full">
+            <div class="max-w-3xl">
+                <h1 class="text-6xl md:text-7xl lg:text-8xl font-bold leading-tight">
+                    <span class="block">Invictus</span>
+                    <span class="block mt-2 text-amber-600">Manpower</span>
+                    <span class="block mt-2 text-4xl md:text-5xl lg:text-6xl">Services</span>
+                </h1>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="relative py-20 bg-gradient-to-b from-gray-50 via-white to-white" id="about">
+        <!-- Add top gradient for seamless transition -->
+        <div class="absolute inset-x-0 -top-32 h-32 bg-gradient-to-b from-transparent to-gray-50 pointer-events-none"></div>
+        
+        <div class="container mx-auto px-6">
+            <div class="max-w-5xl mx-auto">
+                <!-- Section Header -->
+                <div class="fade-in-section"
+                     x-data="{ isVisible: false }"
+                     x-init="
+                         setTimeout(() => {
+                             let observer = new IntersectionObserver((entries) => {
+                                 entries.forEach(entry => {
+                                     if (entry.isIntersecting) {
+                                         isVisible = true;
+                                     }
+                                 });
+                             }, { threshold: 0.1 });
+                             
+                             observer.observe($el);
+                         }, 100)
+                     "
+                     :class="{ 'appear': isVisible }">
+                    <div class="text-center mb-16">
+                        <span class="text-amber-600 font-semibold tracking-wider uppercase text-sm">Who We Are</span>
+                        <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mt-2">About Us</h2>
+                        <div class="w-24 h-1.5 bg-[#C5A572] mx-auto mt-6 rounded-full"></div>
+                    </div>
+                </div>
+
+                <!-- Content Card -->
+                <div class="fade-in-section delay-400"
+                     x-data="{ isVisible: false }"
+                     x-init="
+                         setTimeout(() => {
+                             let observer = new IntersectionObserver((entries) => {
+                                 entries.forEach(entry => {
+                                     if (entry.isIntersecting) {
+                                         isVisible = true;
+                                     }
+                                 });
+                             }, { threshold: 0.1 });
+                             
+                             observer.observe($el);
+                         }, 100)
+                     "
+                     :class="{ 'appear': isVisible }">
+                    <div class="bg-white rounded-3xl shadow-xl p-8 lg:p-12 hover:shadow-2xl relative overflow-hidden">
+                        <!-- Decorative Elements -->
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-amber-50 rounded-full -mr-16 -mt-16"></div>
+                        <div class="absolute bottom-0 left-0 w-32 h-32 bg-amber-50 rounded-full -ml-16 -mb-16"></div>
+
+                        <!-- Content -->
+                        <div class="relative">
+                            <p class="text-gray-600 leading-relaxed mb-6">
+                                <span class="block mb-4">At Invictus Manpower Services Inc., we are dedicated to bridging the gap between exceptional talent and outstanding opportunities. With years of experience in the recruitment industry, we have established ourselves as a trusted partner for both businesses and job seekers.</span>
+                                <span class="block mb-4">Our commitment to excellence and personalized service sets us apart in the industry. We understand that each client and candidate is unique, and we tailor our approach to meet specific needs and requirements.</span>
+                                <span class="block font-medium text-gray-900">We look forward to providing you with the best of services in days to come.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section class="py-20 bg-gradient-to-b from-[#F5EEE6] to-white fade-in-section" id="mission">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <!-- Mission -->
+                <div class="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 bg-[#C5A572] rounded-xl flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </div>
+                        <h2 class="text-3xl font-bold text-gray-900">Our Mission</h2>
+                    </div>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        Invictus manpower services inc. Has redefined the Process of local recruitment to a predictably accurate Process with defined parameters for matching job skills Of potential candidates with the job profiles of local Companies. We, as a local manpower services agency Provide local job for skilled, semi-skilled and un-skilled Workers with various corporate giants all over the Philippines.
+                    </p>
+                </div>
+
+                <!-- Vision -->
+                <div class="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 bg-[#C5A572] rounded-xl flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                            </svg>
+                        </div>
+                        <h2 class="text-3xl font-bold text-gray-900">Our Vision</h2>
+                    </div>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        To be the Philippines' most trusted partner in workforce solutions, bridging excellence between employers and professionals.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries Section -->
+    <section class="py-20 bg-white fade-in-section" id="industries">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Industries We Serve</h2>
+                <div class="w-24 h-1 bg-[#C5A572] mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                <!-- Wholesale and Retail -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                         alt="Wholesale and Retail" 
+                         class="w-full h-72 object-cover transform group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute inset-0 z-20 flex items-center justify-center p-6">
+                        <h3 class="text-2xl font-bold text-white text-center group-hover:text-[#E5D4B3] transition-colors duration-300">WHOLESALE AND RETAIL</h3>
+                    </div>
+                </div>
+
+                <!-- Construction -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                         alt="Construction" 
+                         class="w-full h-72 object-cover transform group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute inset-0 z-20 flex items-center justify-center p-6">
+                        <h3 class="text-2xl font-bold text-white text-center group-hover:text-[#E5D4B3] transition-colors duration-300">CONSTRUCTION</h3>
+                    </div>
+                </div>
+
+                <!-- School -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                         alt="School" 
+                         class="w-full h-72 object-cover transform group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute inset-0 z-20 flex items-center justify-center p-6">
+                        <h3 class="text-2xl font-bold text-white text-center group-hover:text-[#E5D4B3] transition-colors duration-300">SCHOOL</h3>
+                    </div>
+                </div>
+
+                <!-- Healthcare -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                         alt="Healthcare" 
+                         class="w-full h-72 object-cover transform group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute inset-0 z-20 flex items-center justify-center p-6">
+                        <h3 class="text-2xl font-bold text-white text-center group-hover:text-[#E5D4B3] transition-colors duration-300">HEALTH CARE AND CLINIC</h3>
+                    </div>
+                </div>
+
+                <!-- Transport -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                         alt="Transport" 
+                         class="w-full h-72 object-cover transform group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute inset-0 z-20 flex items-center justify-center p-6">
+                        <h3 class="text-2xl font-bold text-white text-center group-hover:text-[#E5D4B3] transition-colors duration-300">TRANSPORT AND LOGISTICS</h3>
+                    </div>
+                </div>
+
+                <!-- IT and BPO -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                         alt="IT and BPO" 
+                         class="w-full h-72 object-cover transform group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute inset-0 z-20 flex items-center justify-center p-6">
+                        <h3 class="text-2xl font-bold text-white text-center group-hover:text-[#E5D4B3] transition-colors duration-300">IT AND BPO</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values Section -->
+    <section class="py-20 bg-gradient-to-b from-[#F5EEE6] to-white fade-in-section relative overflow-hidden" id="core-values"
+             x-intersect:enter="$el.classList.add('is-visible')"
+             x-intersect:leave="$el.classList.remove('is-visible')">
+        <!-- Subtle Background Pattern -->
+        <div class="absolute inset-0 bg-pattern opacity-5"></div>
+        
+        <!-- Decorative Elements -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-amber-50/30 rounded-full blur-3xl -mr-32 -mt-32"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-amber-50/30 rounded-full blur-3xl -ml-32 -mb-32"></div>
+
+        <div class="container mx-auto px-6 relative">
+            <!-- Section Header -->
+            <div class="text-center mb-16 transform transition-all duration-1000 delay-200"
+                 x-intersect:enter="translate-y-0 opacity-100"
+                 x-intersect:leave="translate-y-8 opacity-0">
+                <span class="text-amber-600 font-semibold tracking-wider uppercase text-sm">What Drives Us</span>
+                <h2 class="text-4xl lg:text-4xl font-bold text-gray-900 mt-2">Our Core Values</h2>
+                <div class="w-24 h-1.5 bg-[#C5A572] mx-auto mt-6 rounded-full"></div>
+            </div>
+
+            <!-- Values Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto" x-data="{
+                values: [
+                    {
+                        title: 'Integrity and Ethical Practices',
+                        icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z'
+                    },
+                    {
+                        title: 'Professionalism',
+                        icon: 'M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'
+                    },
+                    {
+                        title: 'Client Focus',
+                        icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z'
+                    },
+                    {
+                        title: 'People-Centric Approach',
+                        icon: 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z'
+                    },
+                    {
+                        title: 'Excellence',
+                        icon: 'M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z'
+                    },
+                    {
+                        title: 'Fairness and Respect',
+                        icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z'
+                    },
+                    {
+                        title: 'Innovation and Adaptability',
+                        icon: 'M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z'
+                    },
+                    {
+                        title: 'Transparency and Open Communication',
+                        icon: 'M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z'
+                    },
+                    {
+                        title: 'Commitment to Compliance',
+                        icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z'
+                    }
+                ]
+            }">
+                <template x-for="(value, index) in values" :key="index">
+                    <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl group relative overflow-hidden"
+                         :class="{ 'opacity-100 translate-y-0': isVisible, 'opacity-0 translate-y-8': !isVisible }"
+                         :style="'transition: all 1s ease-out ' + (index * 200) + 'ms'"
+                         x-data="{ isVisible: false }"
+                         x-intersect:enter.full="isVisible = true"
+                         x-intersect:leave="isVisible = false">
+                        <div class="absolute inset-0 bg-gradient-to-r from-amber-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="relative flex items-center gap-4">
+                            <div class="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center group-hover:bg-[#C5A572] transition-colors duration-300">
+                                <svg class="w-6 h-6 text-[#C5A572] group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x-bind:d="value.icon"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900" x-text="value.title"></h3>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300">
+        <div class="container mx-auto px-6 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+                <!-- Company Info -->
+                <div>
+                    <img src="images/logo.png" alt="Invictus Manpower Services" class="h-24 w-auto mb-6">
+                </div>
+
+                <!-- Address -->
+                <div>
+                    <h3 class="text-[#C5A572] font-bold text-lg mb-6">Address</h3>
+                    <div class="space-y-3 text-sm">
+                        <div class="space-y-1">
+                            <p>Unit H-D 1120 Otis Bldg.</p>
+                            <p>Mendiola Ext. Paco Manila</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h3 class="text-[#C5A572] font-bold text-lg mb-6">Contact</h3>
+                    <div class="space-y-3 text-sm">
+                        <p class="flex items-center">
+                            <span class="block">Tel: (02) 8351-6872</span>
+                        </p>
+                        <p class="flex items-center">
+                            <span class="block">Email: info@invictusmanpower.net</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-[#C5A572] font-bold text-lg mb-6">Quick Links</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li>
+                            <a href="#about" class="hover:text-[#C5A572] transition-colors duration-300 block">About Us</a>
+                        </li>
+                        <li>
+                            <a href="#mission" class="hover:text-[#C5A572] transition-colors duration-300 block">Mission & Vision</a>
+                        </li>
+                        <li>
+                            <a href="#industries" class="hover:text-[#C5A572] transition-colors duration-300 block">Industries</a>
+                        </li>
+                        <li>
+                            <a href="#core-values" class="hover:text-[#C5A572] transition-colors duration-300 block">Core Values</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Working Hours -->
+                <div>
+                    <h3 class="text-[#C5A572] font-bold text-lg mb-6">Working Hours</h3>
+                    <div class="space-y-3 text-sm">
+                        <div>
+                            <p class="text-gray-400">Monday - Friday</p>
+                            <p>9:00 AM - 6:00 PM</p>
+                        </div>
+                        <div>
+                            <p class="text-gray-400">Saturday - Sunday</p>
+                            <p>Closed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="border-t border-gray-800">
+            <div class="container mx-auto px-6">
+                <p class="text-sm text-center py-6">&copy; 2024 Invictus Manpower Services Inc.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="fixed bottom-8 right-8 bg-[#C5A572] text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-[#B49162] focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+        </svg>
+    </button>
+
+    <script>
+        // Scroll to Top functionality
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        
+        // Show button when user scrolls down 300px
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.remove('opacity-0', 'invisible');
+                scrollToTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                scrollToTopBtn.classList.remove('opacity-100', 'visible');
+                scrollToTopBtn.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        // Smooth scroll to top when button is clicked
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Mobile menu functionality
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+        const closeIcon = document.getElementById('closeIcon');
+        let isMenuOpen = false;
+
+        menuBtn.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileMenu.classList.remove('hidden');
+                menuIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            }
+        });
+
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.getElementsByTagName('a');
+        Array.from(mobileLinks).forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+                isMenuOpen = false;
+            });
+        });
+
+        // Hide mobile menu on window resize if screen becomes larger
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) { // md breakpoint
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+                isMenuOpen = false;
+            }
+        });
+
+        // Add scroll event listener for nav background opacity
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 0) {
+                nav.classList.remove('bg-gray-900/95');
+                nav.classList.add('bg-gray-900');
+            } else {
+                nav.classList.remove('bg-gray-900');
+                nav.classList.add('bg-gray-900/95');
+            }
+        });
+
+        // Scroll animation
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observerCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+        document.querySelectorAll('.fade-in-section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
