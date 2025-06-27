@@ -6,9 +6,11 @@
     <title>Invictus Manpower Services</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="src/output.css">
+    <link rel="stylesheet" href="src/custom.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script defer src="https://unpkg.com/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="src/main.js"></script>
     <script>
         document.addEventListener('alpine:init', () => {
             Alpine.data('scrollBehavior', () => ({
@@ -19,242 +21,6 @@
             }));
         });
     </script>
-    <style>
-        [x-cloak] { display: none !important; }
-        
-        .fade-in-section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        
-        .fade-in-section.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .bg-pattern {
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f59e0b' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-
-        .translate-y-8 {
-            transform: translateY(2rem);
-            opacity: 0;
-        }
-        
-        .translate-y-0 {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .opacity-0 {
-            opacity: 0;
-        }
-        
-        .opacity-100 {
-            opacity: 1;
-        }
-
-        .fade-in-section {
-            opacity: 0;
-            transition: all 1.5s ease-out;
-        }
-        
-        .fade-in-section.appear {
-            opacity: 1;
-        }
-
-        .fade-in-section.delay-200 {
-            transition-delay: 200ms;
-        }
-
-        .fade-in-section.delay-400 {
-            transition-delay: 400ms;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(var(--rotation)); }
-            50% { transform: translateY(-20px) rotate(var(--rotation)); }
-            100% { transform: translateY(0px) rotate(var(--rotation)); }
-        }
-        .animate-float {
-            --rotation: 0deg;
-            animation: float 6s ease-in-out infinite;
-        }
-        .rotate-12 {
-            --rotation: 12deg;
-        }
-        .rotate-6 {
-            --rotation: -6deg;
-        }
-        .animation-delay-300 {
-            animation-delay: 300ms;
-        }
-        .animation-delay-500 {
-            animation-delay: 500ms;
-        }
-        .animation-delay-700 {
-            animation-delay: 700ms;
-        }
-
-        /* Text Animation Styles */
-        @keyframes slideInUp {
-            from {
-                transform: translateY(100px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .hero-text {
-            position: relative;
-            display: inline-block;
-        }
-
-        .hero-text::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: #C5A572;
-            transition: width 0.3s ease;
-        }
-
-        .hero-text:hover::after {
-            width: 100%;
-        }
-
-        @keyframes gradientText {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        .gradient-text {
-            background: linear-gradient(90deg, #C5A572, #E5D4B3, #C5A572);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientText 3s ease infinite;
-        }
-
-        .text-shadow-custom {
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Company Name Animation */
-        .company-name {
-            background: linear-gradient(to right, #C5A572 20%, #E5D4B3 40%, #C5A572 60%, #E5D4B3 80%);
-            background-size: 200% auto;
-            color: #000;
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shine 3s ease-in-out infinite;
-            transition: all 0.3s ease;
-        }
-
-        @keyframes shine {
-            to {
-                background-position: 200% center;
-            }
-        }
-
-        .company-name:hover {
-            letter-spacing: 0.05em;
-        }
-
-        /* Hero Text Styles */
-        .bg-size-200 {
-            background-size: 200% 100%;
-        }
-        
-        .hover\:bg-pos-100:hover {
-            background-position: 100% 0;
-        }
-
-        /* Hero Text Styles */
-        .hero-title {
-            position: relative;
-            z-index: 20;
-        }
-
-        .hero-text-main {
-            position: relative;
-            display: inline-block;
-        }
-
-        .hero-text-outline {
-            -webkit-text-stroke: 1px rgba(197, 165, 114, 0.3);
-            color: transparent;
-            position: absolute;
-            left: 2px;
-            top: 2px;
-            z-index: -1;
-            animation: outlineFloat 3s ease-in-out infinite;
-        }
-
-        @keyframes outlineFloat {
-            0%, 100% {
-                transform: translateY(0) translateX(0);
-            }
-            50% {
-                transform: translateY(-5px) translateX(2px);
-            }
-        }
-
-        .hero-text-main::after {
-            content: '';
-            position: absolute;
-            left: -10px;
-            top: 50%;
-            height: 60%;
-            width: 3px;
-            background: #C5A572;
-            transform: translateY(-50%);
-            animation: accentPulse 2s ease-in-out infinite;
-        }
-
-        @keyframes accentPulse {
-            0%, 100% {
-                opacity: 0.3;
-                height: 60%;
-            }
-            50% {
-                opacity: 0.7;
-                height: 75%;
-            }
-        }
-
-        .hero-accent {
-            position: relative;
-            display: inline-block;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        }
-
-        .hero-accent::before {
-            content: '';
-            position: absolute;
-            left: -4px;
-            right: -4px;
-            bottom: 15%;
-            height: 25%;
-            background-color: rgba(197, 165, 114, 0.15);
-            z-index: -1;
-        }
-    </style>
 </head>
 <body class="bg-white font-montserrat" x-data="scrollBehavior">
     <!-- Navigation -->
@@ -322,13 +88,13 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section class="relative min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden pt-24 md:pt-0">
         <!-- Background Image with Gradient Overlay -->
         <div class="absolute inset-0">
-            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+            <img src="images/herobg.avif"
                  alt="Background" 
                  class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-r from-white/95 via-white/50 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-white/95 via-white/70 to-transparent md:via-white/50"></div>
             <div class="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-gray-50 to-transparent"></div>
         </div>
 
@@ -388,15 +154,15 @@
 
             <!-- Content -->
         <div class="relative z-10 w-full">
-            <div class="container mx-auto px-8 sm:px-12 lg:pl-24 lg:pr-0">
-                <div class="lg:max-w-[600px]">
-                    <h1 class="text-6xl md:text-7xl lg:text-8xl font-bold leading-tight hero-title">
-                        <span class="block text-gray-800 relative hero-text-main">
-                            <span class="hero-text-outline">INVICTUS</span>
+            <div class="container mx-auto px-6 sm:px-8 lg:px-16">
+                <div class="lg:max-w-[700px]">
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight hero-title">
+                        <span class="block text-gray-800 relative hero-text-main hero-title-xl">
+                            <span class="hero-text-outline hidden md:block">INVICTUS</span>
                             INVICTUS
                         </span>
-                        <span class="block mt-2 hero-accent text-gray-700">MANPOWER</span>
-                        <span class="block mt-2 text-3xl md:text-4xl lg:text-5xl text-gray-500 tracking-[.25em] font-light">SERVICES</span>
+                        <span class="block mt-2 hero-accent text-gray-700 hero-subtitle-xl">MANPOWER</span>
+                        <span class="block mt-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-gray-500 tracking-[.15em] md:tracking-[.25em] font-light hero-services-xl">SERVICES</span>
                     </h1>
                 </div>
             </div>
@@ -404,7 +170,7 @@
     </section>
 
     <!-- About Section -->
-    <section class="relative py-20 bg-gradient-to-b from-gray-50 via-white to-white overflow-hidden" id="about">
+    <section class="relative py-16 md:py-20 bg-gradient-to-b from-gray-50 via-white to-white overflow-hidden" id="about">
         <!-- Add top gradient for seamless transition -->
         <div class="absolute inset-x-0 -top-32 h-32 bg-gradient-to-b from-transparent to-gray-50 pointer-events-none"></div>
         
@@ -489,11 +255,11 @@
     </section>
 
     <!-- Mission & Vision Section -->
-    <section class="py-20 bg-gradient-to-b from-[#F5EEE6] to-white fade-in-section" id="mission">
+    <section class="py-16 md:py-20 bg-gradient-to-b from-[#F5EEE6] to-white fade-in-section" id="mission">
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                 <!-- Mission -->
-                <div class="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300">
+                <div class="bg-white rounded-2xl p-6 md:p-8 shadow-xl hover:shadow-2xl transition-all duration-300">
                     <div class="flex items-center gap-4 mb-6">
                         <div class="w-12 h-12 bg-[#C5A572] rounded-xl flex items-center justify-center">
                             <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -513,7 +279,7 @@
                 </div>
 
                 <!-- Vision -->
-                <div class="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300">
+                <div class="bg-white rounded-2xl p-6 md:p-8 shadow-xl hover:shadow-2xl transition-all duration-300">
                     <div class="flex items-center gap-4 mb-6">
                         <div class="w-12 h-12 bg-[#C5A572] rounded-xl flex items-center justify-center">
                             <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -534,18 +300,18 @@
     </section>
 
     <!-- Industries Section -->
-    <section class="py-20 bg-white fade-in-section" id="industries">
+    <section class="py-16 md:py-20 bg-white fade-in-section" id="industries">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Industries We Serve</h2>
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Industries We Serve</h2>
                 <div class="w-24 h-1 bg-[#C5A572] mx-auto"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto">
                 <!-- Wholesale and Retail -->
                 <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10"></div>
-                    <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                    <img src="images/wholesale&retail.avif" 
                          alt="Wholesale and Retail" 
                          class="w-full h-72 object-cover transform group-hover:scale-110 transition-transform duration-300">
                     <div class="absolute inset-0 z-20 flex items-center justify-center p-6">
@@ -556,7 +322,7 @@
                 <!-- Construction -->
                 <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10"></div>
-                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                    <img src="images/construction.avif" 
                          alt="Construction" 
                          class="w-full h-72 object-cover transform group-hover:scale-110 transition-transform duration-300">
                     <div class="absolute inset-0 z-20 flex items-center justify-center p-6">
@@ -567,7 +333,7 @@
                 <!-- School -->
                 <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10"></div>
-                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                    <img src="images/school.avif" 
                          alt="School" 
                          class="w-full h-72 object-cover transform group-hover:scale-110 transition-transform duration-300">
                     <div class="absolute inset-0 z-20 flex items-center justify-center p-6">
@@ -578,7 +344,7 @@
                 <!-- Healthcare -->
                 <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10"></div>
-                    <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                    <img src="images/healthcare.avif" 
                          alt="Healthcare" 
                          class="w-full h-72 object-cover transform group-hover:scale-110 transition-transform duration-300">
                     <div class="absolute inset-0 z-20 flex items-center justify-center p-6">
@@ -589,7 +355,7 @@
                 <!-- Transport -->
                 <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10"></div>
-                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                    <img src="images/logistics.avif" 
                          alt="Transport" 
                          class="w-full h-72 object-cover transform group-hover:scale-110 transition-transform duration-300">
                     <div class="absolute inset-0 z-20 flex items-center justify-center p-6">
@@ -600,7 +366,7 @@
                 <!-- IT and BPO -->
                 <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10"></div>
-                    <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                    <img src="images/it.avif" 
                          alt="IT and BPO" 
                          class="w-full h-72 object-cover transform group-hover:scale-110 transition-transform duration-300">
                     <div class="absolute inset-0 z-20 flex items-center justify-center p-6">
@@ -612,7 +378,7 @@
     </section>
 
     <!-- Core Values Section -->
-    <section class="py-20 bg-gradient-to-b from-[#F5EEE6] to-white fade-in-section relative overflow-hidden" id="core-values"
+    <section class="py-16 md:py-20 bg-gradient-to-b from-[#F5EEE6] to-white fade-in-section relative overflow-hidden" id="core-values"
              x-intersect:enter="$el.classList.add('is-visible')"
              x-intersect:leave="$el.classList.remove('is-visible')">
         <!-- Subtle Background Pattern -->
@@ -676,7 +442,7 @@
                 <template x-for="(value, index) in values" :key="index">
                     <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl group relative overflow-hidden"
                          :class="{ 'opacity-100 translate-y-0': isVisible, 'opacity-0 translate-y-8': !isVisible }"
-                         :style="'transition: all 1s ease-out ' + (index * 200) + 'ms'"
+                         :style="'transition: all 0.5s ease-out ' + (index * 100) + 'ms'"
                          x-data="{ isVisible: false }"
                          x-intersect:enter.full="isVisible = true"
                          x-intersect:leave="isVisible = false">
@@ -697,66 +463,61 @@
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-gray-300">
-        <div class="container mx-auto px-6 py-16">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
-                <!-- Company Info -->
-                <div>
-                    <img src="images/inbektuslogo.png" alt="Invictus Manpower Services" class="h-[150px] w-auto mb-6">
-                </div>
-
+        <div class="container mx-auto px-6 py-16 md:py-24">
+            <!-- Footer Content Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-16 items-start">
                 <!-- Address -->
                 <div>
-                    <h3 class="text-[#C5A572] font-bold text-lg mb-6">Address</h3>
-                    <div class="space-y-3 text-sm">
-                        <div class="space-y-1">
-                            <p>Unit H-D 1120 Otis Bldg.</p>
-                            <p>Mendiola Ext. Paco Manila</p>
-                        </div>
+                    <h3 class="text-[#C5A572] font-bold text-xl mb-6">Address</h3>
+                    <div class="space-y-2 text-base">
+                        <p>Unit H-D 1120 Otis Bldg.</p>
+                        <p>Mendiola Ext. Paco Manila</p>
                     </div>
                 </div>
 
                 <!-- Contact -->
                 <div>
-                    <h3 class="text-[#C5A572] font-bold text-lg mb-6">Contact</h3>
-                    <div class="space-y-3 text-sm">
-                        <p class="flex items-center">
-                            <span class="block">Tel: (02) 8351-6872</span>
-                        </p>
-                        <p class="flex items-center">
-                            <span class="block">Email: info@invictusmanpower.net</span>
-                        </p>
+                    <h3 class="text-[#C5A572] font-bold text-xl mb-6">Contact</h3>
+                    <div class="space-y-2 text-base">
+                        <p>Tel: (02) 8351-6872</p>
+                        <p>Email: info@invictusmanpower.net</p>
                     </div>
+                </div>
+
+                <!-- Logo in Center -->
+                <div class="flex justify-center items-start pt-4">
+                    <img src="images/inbektuslogo.png" alt="Invictus Manpower Services" class="h-[180px] w-auto">
                 </div>
 
                 <!-- Quick Links -->
                 <div>
-                    <h3 class="text-[#C5A572] font-bold text-lg mb-6">Quick Links</h3>
-                    <ul class="space-y-3 text-sm">
+                    <h3 class="text-[#C5A572] font-bold text-xl mb-6">Quick Links</h3>
+                    <ul class="space-y-2 text-base">
                         <li>
-                            <a href="#about" class="hover:text-[#C5A572] transition-colors duration-300 block">About Us</a>
+                            <a href="#about" class="hover:text-[#C5A572] transition-colors duration-300">About Us</a>
                         </li>
                         <li>
-                            <a href="#mission" class="hover:text-[#C5A572] transition-colors duration-300 block">Mission & Vision</a>
+                            <a href="#mission" class="hover:text-[#C5A572] transition-colors duration-300">Mission & Vision</a>
                         </li>
                         <li>
-                            <a href="#industries" class="hover:text-[#C5A572] transition-colors duration-300 block">Industries</a>
+                            <a href="#industries" class="hover:text-[#C5A572] transition-colors duration-300">Industries</a>
                         </li>
                         <li>
-                            <a href="#core-values" class="hover:text-[#C5A572] transition-colors duration-300 block">Core Values</a>
+                            <a href="#core-values" class="hover:text-[#C5A572] transition-colors duration-300">Core Values</a>
                         </li>
                     </ul>
                 </div>
 
                 <!-- Working Hours -->
                 <div>
-                    <h3 class="text-[#C5A572] font-bold text-lg mb-6">Working Hours</h3>
-                    <div class="space-y-3 text-sm">
+                    <h3 class="text-[#C5A572] font-bold text-xl mb-6">Working Hours</h3>
+                    <div class="space-y-2 text-base">
                         <div>
-                            <p class="text-gray-400">Monday - Friday</p>
+                            <p>Monday - Friday</p>
                             <p>9:00 AM - 6:00 PM</p>
                         </div>
-                        <div>
-                            <p class="text-gray-400">Saturday - Sunday</p>
+                        <div class="mt-4">
+                            <p>Saturday - Sunday</p>
                             <p>Closed</p>
                         </div>
                     </div>
@@ -769,7 +530,7 @@
             <div class="container mx-auto px-6">
                 <p class="text-sm text-center py-6">&copy; 2024 Invictus Manpower Services</p>
             </div>
-    </div>
+        </div>
     </footer>
 
     <!-- Scroll to Top Button -->
@@ -778,104 +539,5 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
         </svg>
     </button>
-
-    <script>
-        // Scroll to Top functionality
-        const scrollToTopBtn = document.getElementById('scrollToTop');
-        
-        // Show button when user scrolls down 300px
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                scrollToTopBtn.classList.remove('opacity-0', 'invisible');
-                scrollToTopBtn.classList.add('opacity-100', 'visible');
-            } else {
-                scrollToTopBtn.classList.remove('opacity-100', 'visible');
-                scrollToTopBtn.classList.add('opacity-0', 'invisible');
-            }
-        });
-        
-        // Smooth scroll to top when button is clicked
-        scrollToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Mobile menu functionality
-        const menuBtn = document.getElementById('menuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const menuIcon = document.getElementById('menuIcon');
-        const closeIcon = document.getElementById('closeIcon');
-        let isMenuOpen = false;
-
-        menuBtn.addEventListener('click', () => {
-            isMenuOpen = !isMenuOpen;
-            if (isMenuOpen) {
-                mobileMenu.classList.remove('hidden');
-                menuIcon.classList.add('hidden');
-                closeIcon.classList.remove('hidden');
-            } else {
-                mobileMenu.classList.add('hidden');
-                menuIcon.classList.remove('hidden');
-                closeIcon.classList.add('hidden');
-            }
-        });
-
-        // Close mobile menu when clicking on a link
-        const mobileLinks = mobileMenu.getElementsByTagName('a');
-        Array.from(mobileLinks).forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                menuIcon.classList.remove('hidden');
-                closeIcon.classList.add('hidden');
-                isMenuOpen = false;
-            });
-        });
-
-        // Hide mobile menu on window resize if screen becomes larger
-        window.addEventListener('resize', () => {
-            if (window.innerWidth >= 768) { // md breakpoint
-                mobileMenu.classList.add('hidden');
-                menuIcon.classList.remove('hidden');
-                closeIcon.classList.add('hidden');
-                isMenuOpen = false;
-            }
-        });
-
-        // Add scroll event listener for nav background opacity
-        const nav = document.querySelector('nav');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 0) {
-                nav.classList.remove('bg-gray-900/95');
-                nav.classList.add('bg-gray-900');
-            } else {
-                nav.classList.remove('bg-gray-900');
-                nav.classList.add('bg-gray-900/95');
-            }
-        });
-
-        // Scroll animation
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.15
-        };
-
-        const observerCallback = (entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target); // Only animate once
-                }
-            });
-        };
-
-        const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-        document.querySelectorAll('.fade-in-section').forEach(section => {
-            observer.observe(section);
-        });
-    </script>
 </body>
 </html>
