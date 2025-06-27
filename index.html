@@ -96,6 +96,35 @@
         .animation-delay-700 {
             animation-delay: 700ms;
         }
+
+        /* Text Animation Styles */
+        @keyframes slideInUp {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .animate-slide-up {
+            animation: slideInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+
+        .delay-100 {
+            animation-delay: 100ms;
+        }
+
+        .delay-200 {
+            animation-delay: 200ms;
+        }
+
+        .delay-300 {
+            animation-delay: 300ms;
+        }
     </style>
 </head>
 <body class="bg-white font-montserrat" x-data="scrollBehavior">
@@ -123,8 +152,9 @@
                 <div class="flex items-center justify-between h-16">
                     <!-- Logo -->
                     <a href="#" class="flex items-center space-x-2">
-                        <span class="text-2xl font-bold text-[#C5A572]">INVICTUS</span>
-                    </a>
+                        <img src="images/inbektuslogo.png" alt="Invictus Manpower Services" class="h-20 w-auto">
+                      </a>
+                      
 
                     <!-- Desktop Menu -->
                     <div class="hidden md:flex items-center space-x-8">
@@ -229,9 +259,9 @@
         <div class="relative z-10 max-w-6xl mx-auto px-8 sm:px-12 lg:px-16 w-full">
             <div class="max-w-3xl">
                 <h1 class="text-6xl md:text-7xl lg:text-8xl font-bold leading-tight">
-                    <span class="block">Invictus</span>
-                    <span class="block mt-2 text-amber-600">Manpower</span>
-                    <span class="block mt-2 text-4xl md:text-5xl lg:text-6xl">Services</span>
+                    <span class="block animate-slide-up delay-100">Invictus</span>
+                    <span class="block mt-2 text-amber-600 animate-slide-up delay-200">Manpower</span>
+                    <span class="block mt-2 text-4xl md:text-5xl lg:text-6xl animate-slide-up delay-300">Services</span>
                 </h1>
             </div>
         </div>
@@ -293,9 +323,9 @@
                         <!-- Content -->
                         <div class="relative">
                             <p class="text-gray-600 leading-relaxed mb-6">
-                                <span class="block mb-4">At Invictus Manpower Services Inc., we are dedicated to bridging the gap between exceptional talent and outstanding opportunities. With years of experience in the recruitment industry, we have established ourselves as a trusted partner for both businesses and job seekers.</span>
-                                <span class="block mb-4">Our commitment to excellence and personalized service sets us apart in the industry. We understand that each client and candidate is unique, and we tailor our approach to meet specific needs and requirements.</span>
-                                <span class="block font-medium text-gray-900">We look forward to providing you with the best of services in days to come.</span>
+                                <span class="block mb-4">Our organization is an assembly of hardworking, experienced, dynamic and dedicated professionals working to provide quality and superior business solutions. We strongly stand to mediate between the job creators and the job seekers.</span>
+                                <span class="block mb-4">Our commitment, to promote close relationship between the employers and the employees makes our organization one of the best to deal with.</span>
+                                <span class="block font-medium text-gray-900">We look forward in providing with the best of services to you in days to come.</span>
                             </p>
                         </div>
                     </div>
@@ -318,8 +348,13 @@
                         </div>
                         <h2 class="text-3xl font-bold text-gray-900">Our Mission</h2>
                     </div>
-                    <p class="text-lg text-gray-700 leading-relaxed">
-                        Invictus manpower services inc. Has redefined the Process of local recruitment to a predictably accurate Process with defined parameters for matching job skills Of potential candidates with the job profiles of local Companies. We, as a local manpower services agency Provide local job for skilled, semi-skilled and un-skilled Workers with various corporate giants all over the Philippines.
+                    <p class="text-gray-600 leading-relaxed"> 
+                        <span class="block mb-4 font-medium text-gray-900">
+                            "Delivering Excellence to Individuals, Business and, Communities"
+                        </span>
+                        <span class="block">
+                            Our mission statement reflects our commitment in offering the highest quality of service to our clients, candidates and, all the other stakeholders we work with, as well as the delivery of our corporate social responsibility program to help the wider community. It demonstrate how we continually strive to go above and beyond to provide exceptional service.
+                        </span>
                     </p>
                 </div>
 
@@ -334,8 +369,10 @@
                         </div>
                         <h2 class="text-3xl font-bold text-gray-900">Our Vision</h2>
                     </div>
-                    <p class="text-lg text-gray-700 leading-relaxed">
-                        To be the Philippines' most trusted partner in workforce solutions, bridging excellence between employers and professionals.
+                    <p class="text-gray-600 leading-relaxed">
+                        <span class="block mb-4 font-medium text-gray-900">
+                            To deliver the best professional requirement solutions to employers and job seekers in every range of discipline.
+                        </span>
                     </p>
                 </div>
             </div>
@@ -510,7 +547,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
                 <!-- Company Info -->
                 <div>
-                    <img src="images/logo.png" alt="Invictus Manpower Services" class="h-24 w-auto mb-6">
+                    <img src="images/inbektuslogo.png" alt="Invictus Manpower Services" class="h-[150px] w-auto mb-6">
                 </div>
 
                 <!-- Address -->
@@ -576,7 +613,7 @@
         <!-- Copyright -->
         <div class="border-t border-gray-800">
             <div class="container mx-auto px-6">
-                <p class="text-sm text-center py-6">&copy; 2024 Invictus Manpower Services Inc.</p>
+                <p class="text-sm text-center py-6">&copy; 2024 Invictus Manpower Services</p>
             </div>
         </div>
     </footer>
